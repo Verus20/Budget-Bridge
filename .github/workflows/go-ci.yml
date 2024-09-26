@@ -1,24 +1,36 @@
-name: Workflow for Codecov example-python
+name: Workflow for Codecov golang
 on: [push, pull_request]
 jobs:
   run:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: ['1.21.x, 1.23.x']
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v4
+      - name: Setup Go ${{ matrix.go-version }}
+        uses: actions/setup-go@v5
         with:
-          python-version: '3.10'
+          go-version: ${{ matrix.go-version }}
+      - name: Display Go version
+        run: go version
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: go get .
+      - name: Build
+        run: go build -v ./...
       - name: Run tests and collect coverage
-        run: pytest --cov app ${{ env.CODECOV_ATS_TESTS }}
+        run: go test -coverprofile=coverage.txt
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
           verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload Go test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Go-results-${{ matrix.go-version }}
+          path: TestResults-${{ matrix.go-version }}.txt
