@@ -18,7 +18,7 @@ jobs:
       - name: Display Go version
         run: go version
       - name: Install dependencies
-        run: go get .
+        run: cd account && go get .
       - name: Build
         run: go build -v ./...
       - name: Run tests and collect coverage
