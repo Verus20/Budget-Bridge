@@ -1,5 +1,8 @@
 name: Workflow for Codecov golang
 on: [push, pull_request]
+defaults:
+ run:
+  working-directory: ./account
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -18,7 +21,7 @@ jobs:
       - name: Display Go version
         run: go version
       - name: Install dependencies
-        run: cd account && go get .
+        run: go get .
       - name: Build
         run: go build -v ./...
       - name: Run tests and collect coverage
