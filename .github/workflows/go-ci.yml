@@ -30,6 +30,7 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           verbose: true
+          files: ./coverage.txt
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Upload Go test results
