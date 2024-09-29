@@ -1,5 +1,8 @@
 name: Workflow for Codecov golang
 on: [push, pull_request]
+defaults:
+ run:
+  working-directory: ./account
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -22,15 +25,16 @@ jobs:
       - name: Build
         run: go build -v ./...
       - name: Run tests and collect coverage
-        run: go test -coverprofile=coverage.txt
+        run: go test -race -covermode=atomic -coverprofile=coverage.out
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
           verbose: true
+          files: ./coverage.out
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Upload Go test results
         uses: actions/upload-artifact@v4
         with:
-          name: Go-results-${{ matrix.go-version }}
-          path: TestResults-${{ matrix.go-version }}.txt
+          name: Test-results-${{ matrix.go-version }}
+          path: account/coverage.out

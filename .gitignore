@@ -1,0 +1,3 @@
+# CI/Cd artifacts
+*.out
+*.exe
