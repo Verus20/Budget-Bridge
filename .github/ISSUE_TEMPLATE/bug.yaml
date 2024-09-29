@@ -1,0 +1,68 @@
+name: 🐛 Bug
+description: File a bug report
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening a bug report, please search for the behaviour in the existing issues. 
+        
+        ---
+        
+        Thank you for taking the time to file a bug report. To address this bug as fast as possible, we need some information.
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: "Which operating system did this bug occur on? Please provide the version as well."
+      placeholder: "macOS Sonoma 14.4.1"
+    validations:
+      required: true   
+  - type: input
+    id: Software-repo
+    attributes:
+      label: Software repo
+      description: "Please provide the name or link to the software repo where to implement the feature.  "
+      placeholder: "Repo here"
+    validations:
+      required: true
+  - type: input
+    id: Software-version
+    attributes:
+      label: Software version
+      description: "Which version/branch of the software is this bug occurring on?"
+      placeholder: "Version/branch here"
+    validations:
+      required: true
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug description
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: bug-fix
+    attributes:
+      label: Bug fix
+      description: What should be fixed?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Which steps do we need to take to reproduce this error?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: If applicable, provide relevant log output.
+      render: shell
+  - type: textarea
+    id: other
+    attributes:
+      label: Other
+      description: If applicable, please provide any other relevant info needed to create the feature.
+      render: shell

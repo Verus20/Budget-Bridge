@@ -1,0 +1,51 @@
+name: 🔧 Feature
+description: Create a new feature
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to a file a new feature.  Please provide a description below for it.
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: "Which operating system should this be implemented on? Please provide the version as well."
+      placeholder: "macOS Sonoma 14.4.1"
+    validations:
+      required: true  
+  - type: input
+    id: Software-repo
+    attributes:
+      label: Software repo
+      description: "Please provide the name or link to the software repo where to implement the feature.  "
+      placeholder: "Repo here"
+    validations:
+      required: true
+  - type: input
+    id: Software-version
+    attributes:
+      label: Software version/branch
+      description: "Please provide the version/branch to implement this feature on.  "
+      placeholder: "Version/branch here"
+    validations:
+      required: true
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature description
+      description: Tell me more about the feature?
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case of the feature
+      description: What value does implementing this feature provide?
+    validations:
+      required: true
+  - type: textarea
+    id: other
+    attributes:
+      label: Other
+      description: If applicable, please provide any other relevant info needed to create the feature.
+      render: shell
