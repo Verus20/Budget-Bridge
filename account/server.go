@@ -20,7 +20,7 @@ func main() {
 
 	logger.Info("Starting server...")
 
-	router := setupRouter()
+	router := SetupRouter()
 
 	srv := &http.Server{
 		Addr: ":8080",
@@ -57,7 +57,7 @@ func main() {
 	}
 }
 
-func setupRouter() *gin.Engine {
+func SetupRouter() *gin.Engine {
 	router := gin.Default()
 
 	router.GET("api/account", func(c *gin.Context){
