@@ -25,16 +25,16 @@ jobs:
       - name: Build
         run: go build -v ./...
       - name: Run tests and collect coverage
-        run: go test -coverprofile=coverage.txt
+        run: go test -race -covermode=atomic -coverprofile=coverage.out
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
           verbose: true
-          files: ./coverage.txt
+          files: ./coverage.out
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Upload Go test results
         uses: actions/upload-artifact@v4
         with:
           name: Test-results-${{ matrix.go-version }}
-          path: account/coverage.txt
+          path: account/coverage.out

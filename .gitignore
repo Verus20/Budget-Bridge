@@ -1,3 +1,3 @@
 # CI/Cd artifacts
-*.txt
+*.out
 *.exe
