@@ -18,11 +18,11 @@ body:
     validations:
       required: true   
   - type: input
-    id: Software-repo
+    id: Repo-location
     attributes:
-      label: Software repo
-      description: "Please provide the name or link to the software repo where to implement the feature.  "
-      placeholder: "Repo here"
+      label: Repo location
+      description: "Please provide the location in the repo where the bug is occurring.  "
+      placeholder: "Location here"
     validations:
       required: true
   - type: input
